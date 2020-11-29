@@ -1,6 +1,7 @@
 package com.nbdyn.community.controller;
 
 //import com.nbdyn.community.annotation.LoginRequired;
+import com.nbdyn.community.annotation.LoginRequired;
 import com.nbdyn.community.entity.User;
 import com.nbdyn.community.service.UserService;
 import com.nbdyn.community.util.CommunityUtil;
@@ -45,13 +46,13 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
-    //@LoginRequired
+    @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
     public String getSettingPage() {
         return "/site/setting";
     }
 
-    //@LoginRequired
+    @LoginRequired
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
     public String uploadHeader(MultipartFile headerImage, Model model) {
         if (headerImage == null) {
@@ -78,6 +79,11 @@ public class UserController {
             throw new RuntimeException("上传文件失败,服务器发生异常!", e);
         }
 
+
+
+
+
+        // 主要就是下面在进行更新
         // 更新当前用户的头像的路径(web访问路径)
         // http://localhost:8080/community/user/header/xxx.png
         User user = hostHolder.getUser();
