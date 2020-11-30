@@ -20,6 +20,6 @@ public interface DiscussPostMapper {
     // 找出总共有多少行，即总共多少条
     int selectDiscussPostRows(@Param("userId") int userId);
 
-
+    int insertDiscussPost(DiscussPost discussPost);
 
 }
