@@ -3,7 +3,7 @@ $(function(){
 });
 
 function publish() {
-	$("#publishModal").modal("hide");
+	$("#publish	Modal").modal("hide");
 
 	//获取标题和内容
 	var title=$("#recipient-name").val();
