@@ -4,19 +4,18 @@ import com.nbdyn.community.dao.LoginTicketMapper;
 import com.nbdyn.community.dao.UserMapper;
 import com.nbdyn.community.entity.LoginTicket;
 import com.nbdyn.community.entity.User;
+import com.nbdyn.community.util.CommunityConstant;
 import com.nbdyn.community.util.CommunityUtil;
 import com.nbdyn.community.util.MailClient;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 
 import javax.xml.transform.Templates;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,7 +24,7 @@ import java.util.regex.Pattern;
  * @create 2020-11-24-20:35
  */
 @Service
-public class UserService {
+public class UserService implements CommunityConstant {
     public static String getType(Object o) {
         return o.getClass().toString();
     }
@@ -257,4 +256,41 @@ public class UserService {
     public int updateCV(int userId, String CV){
         return userMapper.updateCV(userId, CV);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public Collection<? extends GrantedAuthority> getAuthorities(int userId) {
+        User user = this.findUserById(userId);
+
+        List<GrantedAuthority> list = new ArrayList<>();
+        list.add(new GrantedAuthority() {
+
+            @Override
+            public String getAuthority() {
+                switch (user.getType()) {
+                    case 1:
+                        return AUTHORITY_ADMIN;
+                    case 2:
+                        return AUTHORITY_MODERATOR;
+                    default:
+                        return AUTHORITY_USER;
+                }
+            }
+        });
+        return list;
+    }
+
+
 }
