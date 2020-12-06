@@ -132,7 +132,7 @@ public class UserController {
             model.addAttribute("newPasswordMsg", map.get("newPasswordMsg"));
             model.addAttribute("confirmPasswordMsg", map.get("confirmPasswordMsg"));
 
-            return "/site/setting";
+            return "redirect:/user/setting";
         }
     }
 
@@ -142,7 +142,7 @@ public class UserController {
     public String updatePassword(String newEmail,Model model) {
         User user = hostHolder.getUser();
         userService.updateEmail(user.getId(), newEmail);
-        return "redirect:/index";
+        return "redirect:/user/setting";
     }
 
     // 修改电话
@@ -150,7 +150,7 @@ public class UserController {
     public String updatePhone(String newPhone,Model model) {
         User user = hostHolder.getUser();
         userService.updatePhone(user.getId(), newPhone);
-        return "redirect:/index";
+        return "redirect:/user/setting";
     }
 
     // 修改简介
@@ -158,6 +158,6 @@ public class UserController {
     public String updateCV(String newCV,Model model) {
         User user = hostHolder.getUser();
         userService.updateCV(user.getId(), newCV);
-        return "redirect:/index";
+        return "redirect:/user/setting";
     }
 }

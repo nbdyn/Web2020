@@ -65,22 +65,26 @@
 			<!-- 基本信息 -->
 			<h6 class="text-left text-info border-bottom pb-2 mt-5">基本信息</h6>
 			<div class="form-group row mt-4">
-				<label  class="col-sm-2 col-form-label text-left">个人简介:</label>
-
-				<span th:utext="${user.CV}">这个是直播时间哈，觉得晚的话可以直接看之前的完整录播的~</span>
-
-
+				<label  class="col-sm-2 col-form-label text-left">用户名:</label>
+				<span class="col-sm-2 col-form-label text-left" th:utext="${loginUser.username}"></span>
 			</div>
 			<div class="form-group row mt-4">
-				<label  class="col-sm-2 col-form-label text-left">个人简介2:</label>
-
-				<span th:utext="${loginUser.CV}">这个是直播时间哈，觉得晚的话可以直接看之前的完整录播的~</span>
+				<label  class="col-sm-2 col-form-label text-left">个人简介:</label>
+				<span class="col-lg-12 col-form-label text-left" th:utext="${loginUser.CV}"></span>
+			</div>
+			<div class="form-group row mt-4">
+				<label  class="col-sm-2 col-form-label text-left">手机号:</label>
+				<span class="col-sm-2 col-form-label text-left" th:utext="${loginUser.phone}"></span>
+			</div>
+			<div class="form-group row mt-4">
+				<label  class="col-sm-2 col-form-label text-left">邮箱:</label>
+				<span class="col-sm-2 col-form-label text-left" th:utext="${loginUser.email}"></span>
 			</div>
 
 
 
 			<!-- 上传头像 -->
-			<h6 class="text-left text-info border-bottom pb-2">上传头像</h6>
+			<h6 class="text-left text-info bosrder-bottom pb-2">上传头像</h6>
 			<form class="mt-5" method="post" enctype="multipart/form-data" th:action="@{/user/upload}">
 				<div class="form-group row mt-4">
 					<label for="head-image" class="col-sm-2 col-form-label text-right">选择头像:</label>
