@@ -1,6 +1,9 @@
 $(function(){
 	$("#publishBtn").click(publish);
 });
+$(function(){
+	$("#publishBtn2").click(publish);
+});
 
 function publish() {
 	$("#publish	Modal").modal("hide");
