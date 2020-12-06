@@ -68,6 +68,7 @@ public class LoginController{
         else{
             model.addAttribute("usernameMsg",map.get("usernameMsg"));
             model.addAttribute("passwordMsg",map.get("passwordMsg"));
+            model.addAttribute("phoneMsg",map.get("phoneMsg"));
             model.addAttribute("emailMsg",map.get("emailMsg"));
             return "/site/register";
         }

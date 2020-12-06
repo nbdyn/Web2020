@@ -2,6 +2,7 @@ package com.nbdyn.community.controller;
 
 //import com.nbdyn.community.annotation.LoginRequired;
 import com.nbdyn.community.annotation.LoginRequired;
+import com.nbdyn.community.entity.Page;
 import com.nbdyn.community.entity.User;
 import com.nbdyn.community.service.UserService;
 import com.nbdyn.community.util.CommunityUtil;
@@ -48,7 +49,11 @@ public class UserController {
 
     @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
-    public String getSettingPage() {
+    public String getSettingPage(Model model) {
+        User user=hostHolder.getUser();//调用selectById
+
+        model.addAttribute("user",user);
+
         return "/site/setting";
     }
 
@@ -137,6 +142,22 @@ public class UserController {
     public String updatePassword(String newEmail,Model model) {
         User user = hostHolder.getUser();
         userService.updateEmail(user.getId(), newEmail);
+        return "redirect:/index";
+    }
+
+    // 修改电话
+    @RequestMapping(path = "/updatePhone", method = RequestMethod.POST)
+    public String updatePhone(String newPhone,Model model) {
+        User user = hostHolder.getUser();
+        userService.updatePhone(user.getId(), newPhone);
+        return "redirect:/index";
+    }
+
+    // 修改简介
+    @RequestMapping(path = "/updateCV", method = RequestMethod.POST)
+    public String updateCV(String newCV,Model model) {
+        User user = hostHolder.getUser();
+        userService.updateCV(user.getId(), newCV);
         return "redirect:/index";
     }
 }

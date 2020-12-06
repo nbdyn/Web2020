@@ -15,6 +15,8 @@ public interface UserMapper {
 
     User selectByEmail(String email);
 
+    User selectByPhone(String phone);
+
     int insertUser(User user);
 
     int updateStatus(int id, int status);
@@ -24,5 +26,9 @@ public interface UserMapper {
     int updatePassword(int id, String password);
 
     int updateEmail(int id, String email);
+
+    int updatePhone(int id, String phone);
+
+    int updateCV(int id, String CV);
 
 }

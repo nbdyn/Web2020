@@ -17,6 +17,8 @@ public class User {
     private String activationCode;
     private String headerUrl;
     private Date createTime;
+    private String phone;
+    private String CV;
 
     public int getId() {
         return id;
@@ -98,6 +100,22 @@ public class User {
         this.createTime = createTime;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCV() {
+        return CV;
+    }
+
+    public void setCV(String CV) {
+        this.CV = CV;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -111,6 +129,8 @@ public class User {
                 ", activationCode='" + activationCode + '\'' +
                 ", headerUrl='" + headerUrl + '\'' +
                 ", createTime=" + createTime +
+                ", phone='" + phone + '\'' +
+                ", CV='" + CV + '\'' +
                 '}';
     }
 }

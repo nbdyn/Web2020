@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author dyn
@@ -24,6 +26,9 @@ import java.util.Random;
  */
 @Service
 public class UserService {
+    public static String getType(Object o) {
+        return o.getClass().toString();
+    }
     @Autowired
     private UserMapper userMapper;
 
@@ -65,15 +70,44 @@ public class UserService {
             return map;
         }
 
+        String us=user.getPassword();
+        Pattern pattern = Pattern.compile(".*[a-z]+.*");
+        Pattern pattern2 = Pattern.compile(".*[A-Z]+.*");
+        Pattern pattern3 = Pattern.compile("[^0-9]");
+        Matcher m = pattern3.matcher(us);
+        String us_cut=m.replaceAll("").trim();
+        if(us.length()<=6){
+            map.put("passwordMsg","密码不少于6位!");
+            return map;
+        }
+        if(!pattern.matcher(us).matches()){
+            map.put("passwordMsg","密码要包含小写字母！");
+            return map;
+        }
+        if(!pattern2.matcher(us).matches()){
+            map.put("passwordMsg","密码要包含大写字母！");
+            return map;
+        }
+        if(us_cut.length()<=1){
+            map.put("passwordMsg","密码要包含两个数字！");
+            return map;
+        }
+
+
 
         User u=userMapper.selectByName(user.getUsername());
         if(u!=null){
             map.put("usernameMsg","该账号已存在！");
             return map;
         }
+        u=userMapper.selectByPhone(user.getPhone());
+        if (u!=null){
+            map.put("phoneMsg","该手机号已被注册！");
+            return map;
+        }
         u=userMapper.selectByEmail(user.getEmail());
         if (u!=null){
-            map.put("emailMsg","该email已存在！");
+            map.put("emailMsg","该email已被注册！");
             return map;
         }
 
@@ -89,6 +123,7 @@ public class UserService {
         user.setActivationCode(CommunityUtil.generateUUID());
         user.setHeaderUrl(String.format("http://images.nowcoder.com/head/%dt.png",new Random().nextInt(1000)));
         user.setCreateTime(new Date());
+
 
         userMapper.insertUser(user);
 
@@ -112,6 +147,8 @@ public class UserService {
             map.put("passwordMsg","密码不能为空");
             return map;
         }
+
+
 
         //验证账号
         User user=userMapper.selectByName(username);
@@ -176,6 +213,33 @@ public class UserService {
             map.put("confirmPasswordMsg", "两次输入的密码不同！！");
             return map;
         }
+
+
+        String us=newPassword;
+        Pattern pattern = Pattern.compile(".*[a-z]+.*");
+        Pattern pattern2 = Pattern.compile(".*[A-Z]+.*");
+        Pattern pattern3 = Pattern.compile("[^0-9]");
+        Matcher m = pattern3.matcher(us);
+        String us_cut=m.replaceAll("").trim();
+        if(us.length()<=6){
+            map.put("passwordMsg","密码不少于6位!");
+            return map;
+        }
+        if(!pattern.matcher(us).matches()){
+            map.put("passwordMsg","密码要包含小写字母！");
+            return map;
+        }
+        if(!pattern2.matcher(us).matches()){
+            map.put("passwordMsg","密码要包含大写字母！");
+            return map;
+        }
+        if(us_cut.length()<=1){
+            map.put("passwordMsg","密码要包含两个数字！");
+            return map;
+        }
+
+
+
         // 更新密码
         newPassword = CommunityUtil.md5(newPassword + user.getSalt());
         userMapper.updatePassword(userId, newPassword);
@@ -186,7 +250,11 @@ public class UserService {
         return userMapper.updateEmail(userId, email);
     }
 
+    public int updatePhone(int userId, String phone){
+        return userMapper.updatePhone(userId, phone);
+    }
 
-
-
+    public int updateCV(int userId, String CV){
+        return userMapper.updateCV(userId, CV);
+    }
 }

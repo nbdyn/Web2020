@@ -62,6 +62,23 @@
 	<!-- 内容 -->
 	<div class="main">
 		<div class="container p-5 mt-3 mb-3">
+			<!-- 基本信息 -->
+			<h6 class="text-left text-info border-bottom pb-2 mt-5">基本信息</h6>
+			<div class="form-group row mt-4">
+				<label  class="col-sm-2 col-form-label text-left">个人简介:</label>
+
+				<span th:utext="${user.CV}">这个是直播时间哈，觉得晚的话可以直接看之前的完整录播的~</span>
+
+
+			</div>
+			<div class="form-group row mt-4">
+				<label  class="col-sm-2 col-form-label text-left">个人简介2:</label>
+
+				<span th:utext="${loginUser.CV}">这个是直播时间哈，觉得晚的话可以直接看之前的完整录播的~</span>
+			</div>
+
+
+
 			<!-- 上传头像 -->
 			<h6 class="text-left text-info border-bottom pb-2">上传头像</h6>
 			<form class="mt-5" method="post" enctype="multipart/form-data" th:action="@{/user/upload}">
@@ -130,14 +147,14 @@
 
 
 
-			<!-- 修改邮箱 -->
-			<h6 class="text-left text-info border-bottom pb-2 mt-5">修改邮箱</h6>
-			<form class="mt-5" method="post" th:action="@{/user/updateEmail}">
+			<!-- 修改手机 -->
+			<h6 class="text-left text-info border-bottom pb-2 mt-5">修改手机号</h6>
+			<form class="mt-5" method="post" th:action="@{/user/updatePhone}">
 				<div class="form-group row mt-4">
-					<label for="newEmail" class="col-sm-2 col-form-label text-right">新邮箱:</label>
+					<label for="newPhone" class="col-sm-2 col-form-label text-right">新手机号:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control"
-							   id="newEmail" name="newEmail" placeholder="请输入新的邮箱号!" required>
+							   id="newPhone" name="newPhone" placeholder="请输入新的手机号!" required>
 						<div class="invalid-feedback">
 							密码长度不能小于8位!这句话没有用
 						</div>
@@ -150,6 +167,50 @@
 					</div>
 				</div>
 			</form>
+
+			<!-- 修改邮箱 -->
+			<h6 class="text-left text-info border-bottom pb-2 mt-5">修改邮箱</h6>
+			<form class="mt-5" method="post" th:action="@{/user/updateEmail}">
+				<div class="form-group row mt-4">
+					<label for="newEmail" class="col-sm-2 col-form-label text-right">新邮箱号:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control"
+							   id="newEmail" name="newEmail" placeholder="请输入新的邮箱!" required>
+						<div class="invalid-feedback">
+							密码长度不能小于8位!这句话没有用
+						</div>
+					</div>
+				</div>
+				<div class="form-group row mt-4">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-10 text-center">
+						<button type="submit" class="btn btn-info text-white form-control">立即保存</button>
+					</div>
+				</div>
+			</form>
+
+
+			<!-- 修改CV -->
+			<h6 class="text-left text-info border-bottom pb-2 mt-5">修改个人简介</h6>
+			<form class="mt-5" method="post" th:action="@{/user/updateCV}">
+				<div class="form-group row mt-4">
+					<label for="newCV" class="col-sm-2 col-form-label text-right">新个人简介:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control"
+							   id="newCV" name="newCV" placeholder="请输入新的个人简介!" required>
+						<div class="invalid-feedback">
+							密码长度不能小于8位!这句话没有用
+						</div>
+					</div>
+				</div>
+				<div class="form-group row mt-4">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-10 text-center">
+						<button type="submit" class="btn btn-info text-white form-control">立即保存</button>
+					</div>
+				</div>
+			</form>
+
 		</div>
 	</div>
 
