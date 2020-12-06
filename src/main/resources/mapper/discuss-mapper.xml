@@ -50,4 +50,8 @@
     </update>
 
 
+    <delete id="deleteDiscussPost">
+        delete from discuss_post where id = #{id}
+    </delete>
+
 </mapper>

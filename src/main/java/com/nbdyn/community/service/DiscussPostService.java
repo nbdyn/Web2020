@@ -53,4 +53,11 @@ public class DiscussPostService {
         return discussPostMapper.updateCommentCount(id,commentCount);
     }
 
+    public int deleteDiscussPost(int id){
+        return discussPostMapper.deleteDiscussPost(id);
+    }
+
+
+
+
 }

@@ -31,4 +31,10 @@ public interface DiscussPostMapper {
     //3.6
     int updateCommentCount(int id,int commentCount);
 
+
+
+    int deleteDiscussPost(int id);
+
+
+
 }
