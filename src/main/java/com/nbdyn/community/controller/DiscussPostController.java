@@ -49,7 +49,7 @@ public class DiscussPostController implements CommunityConstant {
         post.setTitle(title);
         post.setContent(content);
         post.setCreateTime(new Date());
-        post.setFinishOrNot(1);
+        post.setFinishOrNot(0);
         post.setPeopleNum(peopleNum);
         post.setKind(kind);
         post.setEndDate(endDate);

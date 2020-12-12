@@ -63,6 +63,11 @@ public class DiscussPostService {
     public int updateCommentCount(int id,int commentCount){
         return discussPostMapper.updateCommentCount(id,commentCount);
     }
+    public int updateFinishOrNoT(int id,int status){
+        return discussPostMapper.updateFinishOrNot(id,status);
+    }
+
+
 
     public int deleteDiscussPost(int id){
         return discussPostMapper.deleteDiscussPost(id);

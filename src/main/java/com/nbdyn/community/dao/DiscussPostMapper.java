@@ -52,5 +52,6 @@ public interface DiscussPostMapper {
 
     int updateStatus(int id, int status);
 
+    int updateFinishOrNot(int id, int status);
 
 }

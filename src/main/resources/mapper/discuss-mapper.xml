@@ -76,6 +76,11 @@
     </update>
 
 
+
+    <update id="updateFinishOrNot">
+        update discuss_post set finishOrNot = #{status} where id = #{id}
+    </update>
+
     <delete id="deleteDiscussPost">
         delete from discuss_post where id = #{id}
     </delete>
