@@ -53,7 +53,6 @@ public class UserController {
         User user=hostHolder.getUser();//调用selectById
 
         model.addAttribute("user",user);
-
         return "/site/setting";
     }
 

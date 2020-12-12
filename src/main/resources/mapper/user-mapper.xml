@@ -5,12 +5,12 @@
 <mapper namespace="com.nbdyn.community.dao.UserMapper">
 
     <sql id="insertFields">
-        username, password, salt, email, type, status, activation_code, header_url, create_time,phone,CV
+        username, password, salt, email, type, status, activation_code, header_url, create_time,phone,CV,card_type,card_num,card_name,create_city
     </sql>
 
 
     <sql id="selectFields">
-        id, username, password, salt, email, type, status, activation_code, header_url, create_time,phone,CV
+        id, username, password, salt, email, type, status, activation_code, header_url, create_time,phone,CV,card_type,card_num,card_name,create_city
     </sql>
 
     <select id="selectById" resultType="User">
@@ -40,7 +40,7 @@
 
     <insert id="insertUser" parameterType="User" keyProperty="id">
         insert into user (<include refid="insertFields"></include>)
-        values(#{username}, #{password}, #{salt}, #{email}, #{type}, #{status}, #{activationCode}, #{headerUrl}, #{createTime}, #{phone}, #{CV})
+        values(#{username}, #{password}, #{salt}, #{email}, #{type}, #{status}, #{activationCode}, #{headerUrl}, #{createTime}, #{phone}, #{CV},#{cardType}, #{cardNum}, #{cardName},#{createCity})
     </insert>
 
     <update id="updateStatus">

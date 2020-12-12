@@ -71,6 +71,9 @@ public class LoginController{
             model.addAttribute("passwordMsg",map.get("passwordMsg"));
             model.addAttribute("phoneMsg",map.get("phoneMsg"));
             model.addAttribute("emailMsg",map.get("emailMsg"));
+            model.addAttribute("cardTypeMsg",map.get("cardTypeMsg"));
+            model.addAttribute("cardNumMsg",map.get("cardNumMsg"));
+            model.addAttribute("cardNameMsg",map.get("cardNameMsg"));
             return "/site/register";
         }
     }

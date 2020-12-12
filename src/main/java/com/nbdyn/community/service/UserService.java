@@ -110,7 +110,19 @@ public class UserService implements CommunityConstant {
             return map;
         }
 
+//        if(user.getCard_type()!="身份证"||user.getCard_type()!="护照"){
+//            map.put("cardTypeMsg","请输入正确的证件类型（身份证或护照）！");
+//            return map;
+//        }
 
+        if (StringUtils.isBlank(user.getCardNum())){
+            map.put("cardNumMsg","证据号码不能为空!");
+            return map;
+        }
+        if (StringUtils.isBlank(user.getCardName())){
+            map.put("cardNameMsg","用户姓名不能为空!");
+            return map;
+        }
 
 
         //sign
@@ -122,12 +134,12 @@ public class UserService implements CommunityConstant {
         user.setActivationCode(CommunityUtil.generateUUID());
         user.setHeaderUrl(String.format("http://images.nowcoder.com/head/%dt.png",new Random().nextInt(1000)));
         user.setCreateTime(new Date());
+        user.setCreateCity("北京");
+
+
 
 
         userMapper.insertUser(user);
-
-
-
 
 
 

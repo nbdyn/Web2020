@@ -9,6 +9,7 @@ import java.util.Date;
 public class User {
     private int id;
     private String username;
+
     private String password;
     private String salt;
     private String email;
@@ -19,6 +20,32 @@ public class User {
     private Date createTime;
     private String phone;
     private String CV;
+    private String cardType;
+    private String cardNum;
+    private String cardName;
+    private String createCity;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", email='" + email + '\'' +
+                ", type=" + type +
+                ", status=" + status +
+                ", activationCode='" + activationCode + '\'' +
+                ", headerUrl='" + headerUrl + '\'' +
+                ", createTime=" + createTime +
+                ", phone='" + phone + '\'' +
+                ", CV='" + CV + '\'' +
+                ", cardType='" + cardType + '\'' +
+                ", cardNum='" + cardNum + '\'' +
+                ", cardName='" + cardName + '\'' +
+                ", createCity='" + createCity + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -116,21 +143,35 @@ public class User {
         this.CV = CV;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", salt='" + salt + '\'' +
-                ", email='" + email + '\'' +
-                ", type=" + type +
-                ", status=" + status +
-                ", activationCode='" + activationCode + '\'' +
-                ", headerUrl='" + headerUrl + '\'' +
-                ", createTime=" + createTime +
-                ", phone='" + phone + '\'' +
-                ", CV='" + CV + '\'' +
-                '}';
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    public String getCardNum() {
+        return cardNum;
+    }
+
+    public void setCardNum(String cardNum) {
+        this.cardNum = cardNum;
+    }
+
+    public String getCardName() {
+        return cardName;
+    }
+
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
+
+    public String getCreateCity() {
+        return createCity;
+    }
+
+    public void setCreateCity(String createCity) {
+        this.createCity = createCity;
     }
 }
