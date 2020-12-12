@@ -78,8 +78,6 @@ public class MasterController {
 
 
 
-
-
         return "/site/mypost";
     }
 

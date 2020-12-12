@@ -16,6 +16,11 @@ public class DiscussPost {
     private Date createTime;
     private int commentCount;
     private double score;
+    private String peopleNum;
+    private String kind;
+    private String endDate;
+    private int finishOrNot;
+
 
     public int getId() {
         return id;
@@ -89,6 +94,38 @@ public class DiscussPost {
         this.score = score;
     }
 
+    public String getPeopleNum() {
+        return peopleNum;
+    }
+
+    public void setPeopleNum(String peopleNum) {
+        this.peopleNum = peopleNum;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getFinishOrNot() {
+        return finishOrNot;
+    }
+
+    public void setFinishOrNot(int finishOrNot) {
+        this.finishOrNot = finishOrNot;
+    }
+
     @Override
     public String toString() {
         return "DiscussPost{" +
@@ -101,6 +138,10 @@ public class DiscussPost {
                 ", createTime=" + createTime +
                 ", commentCount=" + commentCount +
                 ", score=" + score +
+                ", peopleNum='" + peopleNum + '\'' +
+                ", kind='" + kind + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", finishOrNot='" + finishOrNot + '\'' +
                 '}';
     }
 }

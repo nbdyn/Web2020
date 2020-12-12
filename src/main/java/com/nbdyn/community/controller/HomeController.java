@@ -5,12 +5,14 @@ import com.nbdyn.community.entity.Page;
 import com.nbdyn.community.entity.User;
 import com.nbdyn.community.service.DiscussPostService;
 import com.nbdyn.community.service.UserService;
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,4 +65,41 @@ public class HomeController {
     public String getDeniedPage() {
         return "/error/404";
     }
+
+
+
+
+
+
+
+    @RequestMapping(path = "/index/游玩", method = RequestMethod.GET)
+    public String getIndexPage1(Model model, Page page) {
+        // 方法调用钱,SpringMVC会自动实例化Model和Page,并将Page注入Model.
+        // 所以,在thymeleaf中可以直接访问Page对象中的数据.
+        //page.setRows(discussPostService.findDiscussPostRows(0));
+
+
+        page.setRows(discussPostService.findDiscussPostRowsBykind("游玩"));
+        page.setPath("/index");
+        List<DiscussPost> list = discussPostService.findDiscussPostsByKind("游玩", page.getOffset(), page.getLimit());
+        System.out.println(list);
+        List<Map<String, Object>> discussPosts = new ArrayList<>();
+        if (list != null) {
+            for (DiscussPost post : list) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("post", post);
+                User user = userService.findUserById(post.getUserId());
+                map.put("user", user);
+                discussPosts.add(map);
+            }
+        }
+        model.addAttribute("discussPosts", discussPosts);
+
+        return "/index";
+    }
+
+
+
+
+
 }

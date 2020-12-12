@@ -52,8 +52,16 @@
 							</li>
 						</ul>
 						<!-- 搜索 -->
-						<form class="form-inline my-2 my-lg-0" action="site/search.html">
-							<input class="form-control mr-sm-2" type="search" aria-label="Search" />
+						<form class="form-inline my-2 my-lg-0" th:action="@{/index/游玩}">
+							<div class="form-group">
+								<select id="messageKind" name="messageKind" class="form-control">
+									<option value ="技术交流">技术交流</option>
+									<option value ="学业探讨">学业探讨</option>
+									<option value ="社会实践">社会实践</option>
+									<option value ="公益志愿者">公益志愿者</option>
+									<option value ="游玩">游玩</option>
+								</select>
+							</div>
 							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>
 						</form>
 					</div>
@@ -74,7 +82,9 @@
 <!--							<a class="nav-link" href="#">最热</a>-->
 <!--						</li>-->
 <!--					</ul>-->
-					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0" data-toggle="modal" data-target="#publishModal" th:if="${loginUser!=null}">我要发布</button>
+
+
+<!--					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0" data-toggle="modal" data-target="#publishModal" th:if="${loginUser!=null}">我要发布</button>-->
 				</div>
 				<!-- 弹出框 -->
 				<div class="modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="publishModalLabel" aria-hidden="true">

@@ -11,10 +11,14 @@ function publish() {
 	//获取标题和内容
 	var title=$("#recipient-name").val();
 	var content=$("#message-text").val();
+	var peopleNum=$("#people-num").val();
+	var kind=$("#message-kind").val();
+	var endDate=$("#message-date").val();
+
 	// 发送异步请求
 	$.post(
 		CONTEXT_PATH+"/discuss/add",
-		{"title":title,"content":content},
+		{"title":title,"content":content,"peopleNum":peopleNum,"kind":kind,"endDate":endDate},
 		function(data) {
 			data=$.parseJSON(data);
 			//在提示框里显示返回消息

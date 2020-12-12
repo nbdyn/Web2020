@@ -24,9 +24,17 @@ public class DiscussPostService {
     public List<DiscussPost> findDiscussPosts(int userId, int offset, int limit) {
         return discussPostMapper.selectDiscussPosts(userId, offset, limit);
     }
+    public List<DiscussPost> findDiscussPostsByKind(String kind, int offset, int limit) {
+        return discussPostMapper.selectDiscussPostsByKind(kind, offset, limit);
+    }
 
     public int findDiscussPostRows(int userId) {
         return discussPostMapper.selectDiscussPostRows(userId);
+    }
+
+
+    public int findDiscussPostRowsBykind(String kind) {
+        return discussPostMapper.selectDiscussPostRowsBykind(kind);
     }
 
 
@@ -47,6 +55,9 @@ public class DiscussPostService {
     public DiscussPost findDiscussPostById(int id){
         return discussPostMapper.selectDiscussPostById(id);
     }
+
+
+
 
 
     public int updateCommentCount(int id,int commentCount){

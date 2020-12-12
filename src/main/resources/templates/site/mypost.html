@@ -78,15 +78,15 @@
 				<!-- 选项 -->
 				<div class="position-relative">
 					<ul class="nav nav-tabs">
+<!--						<li class="nav-item">-->
+<!--							<a class="nav-link" href="profile.html">个人信息XXXX</a>-->
+<!--						</li>-->
 						<li class="nav-item">
-							<a class="nav-link" href="profile.html">个人信息XXXX</a>
+							<a class="nav-link active" href="mypost.html">我发布的召集令</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link active" href="mypost.html">我的帖子</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="myreply.html">我的回复XXXX</a>
-						</li>
+<!--						<li class="nav-item">-->
+<!--							<a class="nav-link" href="myreply.html">我的回复XXXX</a>-->
+<!--						</li>-->
 					</ul>
 <!--					<a href="profile.html" class="text-muted position-absolute rt-0">返回个人主页&gt;</a>-->
 				</div>
@@ -105,7 +105,7 @@
 					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="publishModalLabel">新帖发布</h5>
+								<h5 class="modal-title" id="publishModalLabel">新召集令发布</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -113,12 +113,30 @@
 							<div class="modal-body">
 								<form>
 									<div class="form-group">
-										<label for="recipient-name" class="col-form-label">标题：</label>
+										<label for="recipient-name" class="col-form-label">召集令标题：</label>
 										<input type="text" class="form-control" id="recipient-name">
 									</div>
 									<div class="form-group">
-										<label for="message-text" class="col-form-label">正文：</label>
-										<textarea class="form-control" id="message-text" rows="15"></textarea>
+										<label for="message-text" class="col-form-label">召集令描述：</label>
+										<textarea class="form-control" id="message-text" rows="5"></textarea>
+									</div>
+									<div class="form-group">
+										<label for="people-num" class="col-form-label">召集人数：</label>
+										<input type="text" class="form-control" id="people-num">
+									</div>
+									<div class="form-group">
+										<label for="message-kind" class="col-form-label">召集令类型：</label>
+										<select id="message-kind" name="message-kind" class="form-control">
+											<option value ="技术交流">技术交流</option>
+											<option value ="学业探讨">学业探讨</option>
+											<option value ="社会实践">社会实践</option>
+											<option value ="公益志愿者">公益志愿者</option>
+											<option value ="游玩">游玩</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="message-date" class="col-form-label">召集结束日期：</label>
+										<input type="date" class="form-control" id="message-date">
 									</div>
 								</form>
 							</div>
@@ -153,7 +171,7 @@
 					<h6>
 						<b class="square">
 						</b>
-						发布的帖子(
+						我发布的召集令(
 						<span th:text="${page.rows}"></span>
 						)
 					</h6>

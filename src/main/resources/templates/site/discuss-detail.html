@@ -95,13 +95,16 @@
 				</div>
 			</div>
 			<!-- 正文 -->
-			<div class="mt-4 mb-3 content" th:utext="${post.content}">
-				金三银四的金三已经到了，你还沉浸在过年的喜悦中吗？
-				如果是，那我要让你清醒一下了：目前大部分公司已经开启了内推，正式网申也将在3月份陆续开始，金三银四，春招的求职黄金时期已经来啦！！！
-				再不准备，作为19应届生的你可能就找不到工作了。。。作为20届实习生的你可能就找不到实习了。。。
-				现阶段时间紧，任务重，能做到短时间内快速提升的也就只有算法了，
-				那么算法要怎么复习？重点在哪里？常见笔试面试算法题型和解题思路以及最优代码是怎样的？
-				跟左程云老师学算法，不仅能解决以上所有问题，还能在短时间内得到最大程度的提升！！！
+
+			<div class="mt-4 mb-3 content" th:utext="|召集人数：${post.peopleNum}人|">
+			</div>
+			<div class="mt-4 mb-3 content" th:utext="|召集类型：${post.kind}|">
+			</div>
+			<div class="mt-4 mb-3 content" th:utext="|召集结束日期：${post.endDate}|">
+			</div>
+<!--			<div class="mt-4 mb-3 content" th:utext="|召集状态：${post.finishOrNot}|">-->
+<!--			</div>-->
+			<div class="mt-4 mb-3 content" th:utext="|召集令描述:${post.content}|">
 			</div>
 		</div>
 		<!-- 回帖 -->
@@ -111,9 +114,9 @@
 				<div class="col-8">
 					<h6><b class="square"></b> <i th:text="${post.commentCount}">30</i>人已接令</h6>
 				</div>
-				<div class="col-4 text-right">
-					<a href="#replyform" class="btn btn-primary btn-sm">&nbsp;&nbsp;接&nbsp;&nbsp;令&nbsp;&nbsp;</a>
-				</div>
+<!--				<div class="col-4 text-right">-->
+<!--					<a href="#replyform" class="btn btn-primary btn-sm">&nbsp;&nbsp;接&nbsp;&nbsp;令&nbsp;&nbsp;</a>-->
+<!--				</div>-->
 			</div>
 			<!-- 回帖列表 -->
 			<ul class="list-unstyled mt-4">
@@ -223,7 +226,7 @@
 			<form class="replyform" method="post" th:action="@{|/comment/add/${post.id}|}">
 				<p class="mt-3">
 					<a name="replyform"></a>
-					<textarea placeholder="在这里畅所欲言你的看法吧!"  name="content"></textarea>
+					<textarea placeholder="对您即将接受的召集令有什么想说的吗？"  name="content"></textarea>
 					<input type="hidden" name="entityType" value="1">
 					<input type="hidden" name="entityId" th:value="${post.id}">
 

@@ -38,7 +38,7 @@ public class DiscussPostController implements CommunityConstant {
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public String addDiscussPost(String title, String content) {
+    public String addDiscussPost(String title, String content,String peopleNum,String kind,String endDate) {
         User user = hostHolder.getUser();
         if (user == null) {
             return CommunityUtil.getJSONString(403, "你还没有登录哦!");
@@ -49,6 +49,11 @@ public class DiscussPostController implements CommunityConstant {
         post.setTitle(title);
         post.setContent(content);
         post.setCreateTime(new Date());
+        post.setFinishOrNot(1);
+        post.setPeopleNum(peopleNum);
+        post.setKind(kind);
+        post.setEndDate(endDate);
+
         discussPostService.addDiscussPost(post);
 
         // 报错的情况,将来统一处理.
