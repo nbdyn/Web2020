@@ -2,6 +2,7 @@ package com.nbdyn.community.service;
 
 import com.nbdyn.community.dao.DiscussPostMapper;
 import com.nbdyn.community.entity.DiscussPost;
+import com.nbdyn.community.entity.UserAndPost;
 import com.nbdyn.community.util.SensitiveFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,10 @@ public class DiscussPostService {
     public List<DiscussPost> findDiscussPostsByKind(String kind, int offset, int limit) {
         return discussPostMapper.selectDiscussPostsByKind(kind, offset, limit);
     }
+
+
+
+
 
     public int findDiscussPostRows(int userId) {
         return discussPostMapper.selectDiscussPostRows(userId);
@@ -90,6 +95,7 @@ public class DiscussPostService {
     public int updateStatus(int id, int status) {
         return discussPostMapper.updateStatus(id, status);
     }
+
 
 
 }

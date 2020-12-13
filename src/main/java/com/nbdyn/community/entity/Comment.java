@@ -2,6 +2,9 @@ package com.nbdyn.community.entity;
 
 import java.util.Date;
 
+
+
+
 public class Comment {
 
     private int id;

@@ -36,4 +36,23 @@
         values(#{userId},#{entityType},#{entityId},#{targetId},#{content},#{status},#{createTime})
     </insert>
 
+
+
+
+
+
+
+    <select id="selectDistinctEntityId" resultType="UserAndPost">
+        select distinct user_id,entity_id
+        from comment
+        where user_id = #{userId}
+        order by entity_id desc
+        limit #{offset}, #{limit}
+    </select>
+
+
+
+
+
+
 </mapper>
