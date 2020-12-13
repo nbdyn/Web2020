@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" th:href="@{/css/global.css}" />
 	<title>召集令-首页</title>
@@ -11,7 +10,7 @@
 <body>	
 	<div class="nk-container">
 		<!-- 头部 -->
-		<header class="bg-dark sticky-top" th:fragment="header">
+		<header class="bg-dark sticky-top" th:replace="index::header">
 			<div class="container">
 				<!-- 导航 -->
 				<nav class="navbar navbar-expand-lg navbar-dark">
@@ -55,19 +54,19 @@
 								</div>
 							</li>
 						</ul>
-						<!-- 搜索 -->
-						<form class="form-inline my-2 my-lg-0" th:action="@{/index2}">
-							<div class="form-group">
-								<select id="messageKind" name="messageKind" class="form-control">
-									<option value ="技术交流">技术交流</option>
-									<option value ="学业探讨">学业探讨</option>
-									<option value ="社会实践">社会实践</option>
-									<option value ="公益志愿者">公益志愿者</option>
-									<option value ="游玩">游玩</option>
-								</select>
-							</div>
-							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>
-						</form>
+<!--						&lt;!&ndash; 搜索 &ndash;&gt;-->
+<!--						<form class="form-inline my-2 my-lg-0" th:action="@{/index2}">-->
+<!--							<div class="form-group">-->
+<!--								<select id="messageKind" name="messageKind" class="form-control">-->
+<!--									<option value ="技术交流">技术交流</option>-->
+<!--									<option value ="学业探讨">学业探讨</option>-->
+<!--									<option value ="社会实践">社会实践</option>-->
+<!--									<option value ="公益志愿者">公益志愿者</option>-->
+<!--									<option value ="游玩">游玩</option>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>-->
+<!--						</form>-->
 					</div>
 				</nav>
 			</div>
@@ -110,6 +109,24 @@
 
 
 <!--					<button type="button" class="btn btn-primary btn-sm position-absolute rt-0" data-toggle="modal" data-target="#publishModal" th:if="${loginUser!=null}">我要发布</button>-->
+
+
+
+					<!-- 搜索 -->
+					<form class="form-inline my-2 my-lg-0" th:action="@{/index2}">
+						<div class="form-group">
+							<select id="messageKind" name="messageKind" class="form-control">
+								<option value ="技术交流">技术交流</option>
+								<option value ="学业探讨">学业探讨</option>
+								<option value ="社会实践">社会实践</option>
+								<option value ="公益志愿者">公益志愿者</option>
+								<option value ="游玩">游玩</option>
+							</select>
+							<button class="btn btn-primary btn-sm position" type="submit">搜索</button>
+						</div>
+					</form>
+
+
 				</div>
 				<!-- 弹出框 -->
 				<div class="modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="publishModalLabel" aria-hidden="true">
@@ -205,7 +222,7 @@
 		</div>
 
 		<!-- 尾部 -->
-		<footer class="bg-dark" th:fragment="footer">
+		<footer class="bg-dark" th:replace="index::footer">
 <!--			<div class="container">-->
 <!--				<div class="row">-->
 <!--					&lt;!&ndash; 二维码 &ndash;&gt;-->

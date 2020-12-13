@@ -132,7 +132,8 @@ public class UserService implements CommunityConstant {
         //user.setStatus(0);
         user.setStatus(1);
         user.setActivationCode(CommunityUtil.generateUUID());
-        user.setHeaderUrl(String.format("http://images.nowcoder.com/head/%dt.png",new Random().nextInt(1000)));
+        //user.setHeaderUrl(String.format("http://images.nowcoder.com/head/%dt.png",new Random().nextInt(1000)));
+        //user.setHeaderUrl("http://localhost:8080/community/user/header/fbcfc9d351be4ceeaf30d5720efac141.jpg");
         user.setCreateTime(new Date());
         user.setCreateCity("北京");
 

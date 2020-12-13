@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="https://static.nowcoder.com/images/logo_87_87.png"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" th:href="@{/css/global.css}" />
 	<link rel="stylesheet" th:href="@{/css/login.css}" />
@@ -114,11 +113,11 @@
 								<form>
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">召集令标题：</label>
-										<input type="text" class="form-control" id="recipient-name">
+										<input type="text" class="form-control" id="recipient-name" value="【召集令】" required="required">
 									</div>
 									<div class="form-group">
 										<label for="message-text" class="col-form-label">召集令描述：</label>
-										<textarea class="form-control" id="message-text" rows="5"></textarea>
+										<textarea class="form-control" id="message-text" rows="5" value="【召集令描述】" required="required"></textarea>
 									</div>
 									<div class="form-group">
 										<label for="people-num" class="col-form-label">召集人数：</label>
