@@ -60,8 +60,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
                         AUTHORITY_USER,
                         AUTHORITY_ADMIN,
                         AUTHORITY_MODERATOR
+                ).antMatchers(
+                "/user/earning"
                 )
-
+                .hasAnyAuthority(
+                        AUTHORITY_ADMIN,
+                        AUTHORITY_MODERATOR
+                )
                 .anyRequest().permitAll()
                 .and().csrf().disable();
 

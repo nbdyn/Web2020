@@ -2,12 +2,15 @@ package com.nbdyn.community.controller;
 
 //import com.nbdyn.community.annotation.LoginRequired;
 import com.nbdyn.community.annotation.LoginRequired;
+import com.nbdyn.community.entity.DiscussPost;
 import com.nbdyn.community.entity.Page;
 import com.nbdyn.community.entity.User;
+import com.nbdyn.community.service.DiscussPostService;
 import com.nbdyn.community.service.UserService;
 import com.nbdyn.community.util.CommunityUtil;
 import com.nbdyn.community.util.HostHolder;
 import org.apache.commons.lang3.StringUtils;
+import org.omg.CORBA.INTERNAL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -47,6 +53,9 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @Autowired
+    private DiscussPostService discussPostService;
+
     @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
     public String getSettingPage(Model model) {
@@ -55,6 +64,29 @@ public class UserController {
         model.addAttribute("user",user);
         return "/site/setting";
     }
+
+    @LoginRequired
+    @RequestMapping(path = "/earning", method = RequestMethod.GET)
+    public String getEarningPage(Model model, Page page) {
+        User user=hostHolder.getUser();//调用selectById
+        model.addAttribute("user",user);
+
+        int fee=0;
+
+        List<DiscussPost> list = discussPostService.findDiscussPosts(0, 0, Integer.MAX_VALUE);
+        System.out.println(list.toArray().length);
+        if (list != null) {
+            for (DiscussPost post : list) {
+                fee=fee+post.getCommentCount()+Integer.parseInt(post.getPeopleNum())*3;//令主支付中介费（召集人数*3 元）、接令支付中介费（ 1 元）
+            }
+
+        }
+
+        model.addAttribute("fee",fee);
+
+        return "/site/earning";
+    }
+
 
     @LoginRequired
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
