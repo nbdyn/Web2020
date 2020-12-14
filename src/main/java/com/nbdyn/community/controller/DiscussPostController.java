@@ -88,7 +88,7 @@ public class DiscussPostController implements CommunityConstant {
                 //评论
                 commentVo.put("comment",comment);
                 //评论的作者
-                commentVo.put("user",userService.findUserById(post.getUserId()));
+                commentVo.put("user",userService.findUserById(comment.getUserId()));
 
                 //回复列表
                 List<Comment> replyList=commentService.findCommentsByEntity(
