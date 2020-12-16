@@ -19,6 +19,6 @@ public interface CommentMapper {
 
     List<UserAndPost> selectDistinctEntityId(int userId, int offset, int limit);//offset是每一页起始行的行号 limit每一页做多多少条
 
-
+    int selectPostedOrNot(int userId,int entityId);
 
 }

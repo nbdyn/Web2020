@@ -147,12 +147,11 @@ public class LoginController{
 
 
 
-
 //package com.nbdyn.community.controller;
 //
-//import com.nowcoder.community.entity.User;
-//import com.nowcoder.community.service.UserService;
-//import com.nowcoder.community.util.CommunityConstant;
+//import com.nbdyn.community.entity.User;
+//import com.nbdyn.community.service.UserService;
+//import com.nbdyn.community.util.CommunityConstant;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;

@@ -50,7 +50,11 @@
         limit #{offset}, #{limit}
     </select>
 
-
+    <select id="selectPostedOrNot" resultType="Integer">
+        select count(*)
+        from comment
+        where user_id = #{userId} and entity_id=#{entityId}
+    </select>
 
 
 

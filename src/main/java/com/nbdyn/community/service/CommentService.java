@@ -98,4 +98,11 @@ public class CommentService implements CommunityConstant {
         return list;
     }
 
+    public int findPostedOrNot(int userId,int entityId){
+        return commentMapper.selectPostedOrNot(userId,entityId);
+    }
+
+
+
+
 }

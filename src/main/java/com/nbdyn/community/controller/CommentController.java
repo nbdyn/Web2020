@@ -28,6 +28,11 @@ public class CommentController {
 
     @RequestMapping(path = "/add/{discussPostId}", method = RequestMethod.POST)
     public String addComment(@PathVariable("discussPostId") int discussPostId, Comment comment) {
+        int pd=commentService.findPostedOrNot(hostHolder.getUser().getId(),discussPostId);
+        if(pd==1){
+            return "/error/404";
+        }
+
         comment.setUserId(hostHolder.getUser().getId());
         comment.setStatus(0);
         comment.setCreateTime(new Date());
